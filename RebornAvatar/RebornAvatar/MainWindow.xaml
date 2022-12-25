@@ -1,0 +1,407 @@
+﻿<mah:MetroWindow x:Class="RebornAvatar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:h="http://helix-toolkit.org/wpf"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:RebornAvatar" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:hx="http://helix-toolkit.org/wpf/SharpDX" xmlns:models="clr-namespace:RebornAvatar.IO.Models"
+                 mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip"
+        Title="Reborn Avatar" Height="978" Width="1818">
+    
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button Click="LaunchKillerSkinsSite" ToolTip="Open up Killerskins site">
+                <iconPacks:PackIconModern Width="22"
+                                  Height="22"
+                                  Kind="Pokeball" />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Click="DeployCupCakes" Content="Clear Console">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconModern Width="22"
+                                        Height="22"
+                                        VerticalAlignment="Center"
+                                        Kind="Console" />
+                            <TextBlock Margin="4 0 0 0"
+                         VerticalAlignment="Center"
+                         Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    
+    <mah:MetroWindow.DataContext>
+        <models:MainViewModel></models:MainViewModel>
+    </mah:MetroWindow.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="454*"/>
+            <ColumnDefinition Width="455*"/>
+        </Grid.ColumnDefinitions>
+        <mah:MetroAnimatedSingleRowTabControl Grid.ColumnSpan="2" FontFamily="Tahoma" FontStyle="Normal" FontWeight="Normal" mah:HeaderedControlHelper.HeaderFontFamily="Verdana">
+            <TabItem x:Name="Home" Header="Home" FontWeight="Normal" IsSelected="True">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="26*"/>
+                        <ColumnDefinition Width="277*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Images/AvatarRebornBackground.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+                    <Label x:Name="Version" Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="69" FontSize="20" Height="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Margin="0,0,2,0"/>
+                    <Ellipse HorizontalAlignment="Left" Height="401" Margin="552,61,0,0" Stroke="Black" VerticalAlignment="Top" Width="402" Grid.Column="1">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Images/AvatarReborn2_icon.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Label Content="Welcome to Reborn Avatar" HorizontalAlignment="Left" Margin="424,467,0,0" VerticalAlignment="Top" Height="72" Width="658" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" FontStyle="Normal" FontSize="48" FontFamily="Ink Free" BorderThickness="0,0,0,0" Grid.Column="1"/>
+                    <mah:FlipView x:Name="FlipView1st"
+              Margin="347,544,504,19"
+              Foreground="{DynamicResource MahApps.Brushes.ThemeBackground}"
+              SelectionChanged="FlipView_SelectionChanged" Grid.Column="1">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Images/projectrift_loadingscreen.png" Stretch="Fill">
+                                    <ImageBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1.2"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform X="0"/>
+                                        </TransformGroup>
+                                    </ImageBrush.RelativeTransform>
+                                </ImageBrush>
+                            </Grid.Background>
+                            <iconPacks:PackIconModern Width="60"
+                                      Height="60"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Images/Wallpaper_SummonersRiftOtherTheme.png" Stretch="Fill">
+                                    <ImageBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleY="1.2"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </ImageBrush.RelativeTransform>
+                                </ImageBrush>
+                            </Grid.Background>
+                            <iconPacks:PackIconModern Width="60"
+                                      Height="60"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Images/Wallpaper_unknownperson.png" Stretch="Fill">
+                                    <ImageBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleY="1.2"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </ImageBrush.RelativeTransform>
+                                </ImageBrush>
+                            </Grid.Background>
+                            <iconPacks:PackIconModern Width="60"
+                                      Height="60"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Grid>
+                    </mah:FlipView>
+                    <TextBlock x:Name="Changelog" HorizontalAlignment="Left" Margin="10,548,0,23" TextWrapping="Wrap" Width="488" Background="#FF1F1B1B" IsEnabled="False" Grid.ColumnSpan="2"><Run Text="Changelog:"/><LineBreak/><Run/><LineBreak/><Run Text="-------------------------------------"/><LineBreak/><Run Text="- First Release"/><LineBreak/><Run Text="- "/><Run Language="de-de" Text="Auto updater and exporter"/></TextBlock>
+                    <TextBox x:Name="ConsoleMain" HorizontalAlignment="Right" Margin="0,548,11,23" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Width="488" Background="#FF1F1B1B" Text="" BorderBrush="#FF1F1B1B" IsReadOnly="True" Grid.Column="1"/>
+                    <Button x:Name="BtnSetProject" Content="Set Project Folder" HorizontalAlignment="Right" Margin="0,475,10,0" Height="26" Width="143" Click="BtnSetProject_Click" ClipToBounds="True" VerticalAlignment="Top" ToolTip="Is needed to manage all projects!" Grid.Column="1"/>
+                    <TextBox x:Name="TbSetProject" HorizontalAlignment="Right" Margin="0,475,158,0" TextWrapping="Wrap" Width="341" ClipToBounds="True" Height="26" VerticalAlignment="Top" Grid.Column="1" TextChanged="TbSetProject_TextChanged" IsReadOnly="True"/>
+                    <Label x:Name="InfoPathSelect" Grid.Column="1" Content="Your path need to  be set to export your map!" HorizontalAlignment="Left" Margin="1163,445,0,0" VerticalAlignment="Top" Width="341" Foreground="White"/>
+                    <Button x:Name="BtnSetLCS" Content="Set CSManager" HorizontalAlignment="Right" Margin="0,513,10,0" Height="26" Width="143" Click="BtnSetLCS_Click" ClipToBounds="True" VerticalAlignment="Top" ToolTip="Is needed to manage all projects!" Grid.Column="1"/>
+                    <TextBox x:Name="TbSetLCS" HorizontalAlignment="Right" Margin="0,513,158,0" TextWrapping="Wrap" Width="341" ClipToBounds="True" Height="26" VerticalAlignment="Top" Grid.Column="1" TextChanged="TbSetLCS_TextChanged" IsReadOnly="True"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem x:Name="SR" Header="Summoners Rift" IsEnabled="False">
+                <Grid Background="#FF252525">
+                    <Label Content="Create New Project" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
+                    <mah:MetroAnimatedTabControl>
+                        <TabItem x:Name="ProjectNameSR" Header="Unknown Project">
+                            <Grid>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/Images/AvatarRebornBackground2.png"/>
+                                </Grid.Background>
+                                <Grid Background="#7F252525" Margin="10,30,1101,10"/>
+                                <TextBox x:Name="TbProjectNameSR" HorizontalAlignment="Left" Margin="142,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442"/>
+                                <Button x:Name="BnSetProjectNameSR" Content="Set Name" HorizontalAlignment="Left" Margin="604,85,0,0" VerticalAlignment="Top" Click="BnSetProjectNameSR_Click" Height="26" Width="72"/>
+                                <Grid Background="#7F252525" Margin="729,30,10,10">
+                                    <CheckBox x:Name="CbNoLightmap" Content="No Lightmaps" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Height="46" Width="154" FontSize="20"/>
+                                </Grid>
+                                <Rectangle HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="1079" Fill="#7F252525" Margin="729,30,0,0"/>
+                                <Label Content="Map Settings" HorizontalAlignment="Left" Margin="1190,32,0,0" VerticalAlignment="Top" FontSize="24" Width="156" Height="42"/>
+                                <Grid Background="#FF2F2F2F" VerticalAlignment="Top" Height="27">
+                                    <Button x:Name="BtnLoadProjectSR" Content="Load Project" HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="False" Padding="5,6,5,6" FontWeight="Bold" Click="BtnLoadProjectSR_Click"/>
+                                    <Button x:Name="BtnSaveProjectSR" Content="Save Project" HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="False" Padding="5,6,5,6" FontWeight="Bold" Margin="81,0,0,0" Click="BtnSaveProjectSR_Click"/>
+                                    <Button x:Name="BtnExportProjectSR" Content="Export Project" HorizontalAlignment="Left" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="False" Padding="5,6,5,6" FontWeight="Bold" Margin="160,0,0,0" Click="BtnExportProjectSR_Click"/>
+                                    <Button x:Name="BtnLoadMapgeo" Content="Load Mapgeo" HorizontalAlignment="Left" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="False" Padding="5,6,5,6" FontWeight="Bold" Click="BtnLoadMapgeo_Click" Margin="271,0,0,0"/>
+                                    <Button x:Name="BtnSaveMapgeo" Content="Save Mapgeo" HorizontalAlignment="Left" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="False" Padding="5,6,5,6" FontWeight="Bold" Margin="358,0,0,0" Click="BtnSaveMapgeo_Click"/>
+                                </Grid>
+                                <Label x:Name="TxSetName" Content="Project Name:" HorizontalAlignment="Left" Margin="38,85,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="TxSetLoadingscreen" Content="Set Loadingscreen:" HorizontalAlignment="Left" Margin="1333,86,0,0" VerticalAlignment="Top"/>
+                                <Image x:Name="ImgLoadinscreen" Margin="1335,118,0,0" Source="/Images/projectrift.png" Visibility="Visible" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Width="456" Height="256"/>
+                                <Button x:Name="BtnLoadingscreen" HorizontalAlignment="Left" Margin="1333,116,0,0" VerticalAlignment="Top" Height="262" Width="460" Visibility="Visible" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="Black" Opacity="0.1" Click="BtnLoadingscreen_Click"/>
+                                <Label x:Name="TxSetAuthor" Content="Author:" HorizontalAlignment="Left" Margin="38,117,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="TxSetVersion" Content="Version:" HorizontalAlignment="Left" Margin="38,148,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="TxSetThumbnail" Content="Thumbnail:" HorizontalAlignment="Left" Margin="38,179,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="TbProjectAuthor" HorizontalAlignment="Left" Margin="142,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442"/>
+                                <TextBox x:Name="TbProjectVersion" HorizontalAlignment="Left" Margin="142,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36"/>
+                                <TextBox x:Name="TbProjectVersion2" HorizontalAlignment="Left" Margin="184,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36"/>
+                                <TextBox x:Name="TbProjectVersion3" HorizontalAlignment="Left" Margin="226,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36"/>
+                                <TextBox x:Name="TbProjectThumbnail" HorizontalAlignment="Left" Margin="142,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442" IsReadOnly="True" MaxLines="1"/>
+                                <Button x:Name="BnSetProjectThumbnail" Content="Browse" HorizontalAlignment="Left" Margin="604,178,0,0" VerticalAlignment="Top" Click="BnSetProjectThumbnail_Click" Height="26" Width="72"/>
+                                <Label x:Name="TxSetProjectLink" Content="Page Link:" HorizontalAlignment="Left" Margin="38,276,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="TbProjectLink" HorizontalAlignment="Left" Margin="142,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442"/>
+                                <TextBox x:Name="TbProjectSupport" HorizontalAlignment="Left" Margin="142,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442"/>
+                                <Label x:Name="TxSetProjectSocial" Content="Support Author:" HorizontalAlignment="Left" Margin="38,307,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="BetaInfo" Content="Custom Skin Manager by moonshadow only!!!" HorizontalAlignment="Left" Margin="38,246,0,0" VerticalAlignment="Top" Foreground="#FFF1760E" FontStyle="Italic" FontWeight="Bold"/>
+                                <Label x:Name="TxSetDescription" Content="Description:" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="TbProjectDescription" HorizontalAlignment="Left" Margin="142,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442"/>
+                                <Rectangle HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="707" Fill="#7F252525" Margin="10,30,0,0"/>
+                                <Label Content="Project Settings" HorizontalAlignment="Left" Margin="274,32,0,0" VerticalAlignment="Top" FontSize="24" Width="178" Height="42"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="LayerSystem" Header="Map Settings">
+                            <Grid>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/Images/AvatarRebornBackground2.png"/>
+                                </Grid.Background>
+                                <TreeView x:Name="LayerEditor" Margin="36,66,909,57" Background="#7F252525" SelectedItemChanged="LayerEditor_SelectedItemChanged" IsTextSearchEnabled="True"/>
+                                <Grid Background="#FF2F2F2F" VerticalAlignment="Top" Height="27">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="421*"/>
+                                        <ColumnDefinition Width="488*"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                                <Grid x:Name="SettingsGrid" Margin="964,66,42,57" Background="#7F252525">
+                                    <Rectangle HorizontalAlignment="Center" Height="56" VerticalAlignment="Top" Width="812" Fill="#7F252525"/>
+                                    <Label Content="Settings" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="24"/>
+                                    <Grid x:Name="Settings" Margin="0,56,0,0" IsEnabled="False">
+                                        <Label x:Name="ObjectName" Content="Object Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="Vertices" Content="Vertices:" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="Indices" Content="Indices:" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="MaterialName" Content="Material Name:" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="FlippedNormals" Content="Flipped Normals:" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="Flags" Content="Flags:" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="Layers" Content="Layers:" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="Lightmap" Content="Lightmap:" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="Baked_Paint_Texture" Content="Baked Paint Texture:" HorizontalAlignment="Left" Margin="10,416,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="LightmapUVOffset" Content="Lightmap UV Offset:" HorizontalAlignment="Left" Margin="10,454,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="BakedPaintTextureUVOffset" Content="Paint UV Offset:" HorizontalAlignment="Left" Margin="10,490,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <TextBlock x:Name="TbVertices" HorizontalAlignment="Left" Margin="217,54,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="14"/>
+                                        <TextBlock x:Name="TbIndices" HorizontalAlignment="Left" Margin="217,91,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="14"/>
+                                        <TextBox x:Name="TbObjectName" HorizontalAlignment="Left" Margin="217,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
+                                        <TextBox x:Name="TbMaterialName" HorizontalAlignment="Left" Margin="217,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
+                                        <CheckBox x:Name="CbFlippedNormals" Content="" HorizontalAlignment="Left" Margin="217,274,0,0" VerticalAlignment="Top"/>
+                                        <ComboBox x:Name="CobFlags" HorizontalAlignment="Left" Margin="217,307,0,0" VerticalAlignment="Top" Width="120">
+                                            <ComboBoxItem ContentStringFormat="" Content="GenericObject"/>
+                                        </ComboBox>
+                                        <CheckBox x:Name="CbLayer1" Content="Layer1" HorizontalAlignment="Left" Margin="217,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer2" Content="Layer2" HorizontalAlignment="Left" Margin="280,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer3" Content="Layer3" HorizontalAlignment="Left" Margin="346,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer4" Content="Layer4" HorizontalAlignment="Left" Margin="412,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer5" Content="Layer5" HorizontalAlignment="Left" Margin="478,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer6" Content="Layer6" HorizontalAlignment="Left" Margin="544,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer7" Content="Layer7" HorizontalAlignment="Left" Margin="610,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer8" Content="Layer8" HorizontalAlignment="Left" Margin="676,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <TextBox x:Name="TbLightmap" HorizontalAlignment="Left" Margin="215,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
+                                        <TextBox x:Name="TbBakedPaintTexture" HorizontalAlignment="Left" Margin="215,418,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
+                                        <TextBox x:Name="TbColorR" HorizontalAlignment="Left" Margin="215,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbColorG" HorizontalAlignment="Left" Margin="342,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbColorB" HorizontalAlignment="Left" Margin="469,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbColorA" HorizontalAlignment="Left" Margin="596,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbBakedPaintColorR" HorizontalAlignment="Left" Margin="215,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbBakedPaintColorG" HorizontalAlignment="Left" Margin="342,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbBakedPaintColorB" HorizontalAlignment="Left" Margin="469,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbBakedPaintColorA" HorizontalAlignment="Left" Margin="596,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <Label x:Name="ShaderSettingsLabel" Content="Shader:" HorizontalAlignment="Left" Margin="10,527,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <ComboBox x:Name="CobShader" HorizontalAlignment="Left" Margin="215,534,0,0" VerticalAlignment="Top" Width="120">
+                                            <ComboBoxItem ContentStringFormat="" Content="DefaultEnv_Flat_AlphaTest"/>
+                                            <ComboBoxItem ContentStringFormat="" Content="Default_Emissive"/>
+                                            <ComboBoxItem ContentStringFormat="" Content="Emissive_Basic"/>
+                                            <ComboBoxItem ContentStringFormat="" Content="SRX_Blend_Master"/>
+                                            <ComboBoxItem ContentStringFormat="" Content="FlickerAlpha_FlipBook"/>
+                                            <ComboBoxItem ContentStringFormat="" Content="Hologram"/>
+                                            <ComboBoxItem ContentStringFormat="" Content="Hologram_Rotate"/>
+                                            <ComboBoxItem ContentStringFormat="" Content="SinFade_Alpha"/>
+                                        </ComboBox>
+                                        <Label x:Name="Transform" Content="Transform:" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <TextBox x:Name="TbTransX" HorizontalAlignment="Left" Margin="217,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbTransY" HorizontalAlignment="Left" Margin="343,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbTransZ" HorizontalAlignment="Left" Margin="471,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <Label x:Name="Rotation" Content="Rotation:" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="Scale" Content="Scale:" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <TextBox x:Name="TbRotX" HorizontalAlignment="Left" Margin="217,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbRotY" HorizontalAlignment="Left" Margin="343,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbRotZ" HorizontalAlignment="Left" Margin="471,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbScaleX" HorizontalAlignment="Left" Margin="217,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbScaleY" HorizontalAlignment="Left" Margin="343,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbScaleZ" HorizontalAlignment="Left" Margin="471,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <Button x:Name="BtnSaveSettings" Content="Save Settings" HorizontalAlignment="Left" Margin="716,674,0,0" VerticalAlignment="Top" ToolTip="If you don't save the settings will be not changed!" Click="BtnSaveSettings_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="MaterialSystem" Header="Materials">
+                            <Grid>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/Images/AvatarRebornBackground2.png"/>
+                                </Grid.Background>
+                                <mah:MetroAnimatedTabControl Background="{x:Null}">
+                                    <TabItem x:Name="MayaMat" Header="Maya Material" Background="#FF252525" FontStyle="Italic">
+                                        <Grid>
+                                            <Grid Background="#7F252525" Margin="0,0,0,16">
+                                                <Label Content="Diffuse:" HorizontalAlignment="Left" Margin="951,66,0,0" VerticalAlignment="Top" FontSize="16" Height="31" Width="88"/>
+                                                <Label Content="Emissive:" HorizontalAlignment="Left" Margin="951,374,0,0" VerticalAlignment="Top" FontSize="16" Height="31" Width="98" RenderTransformOrigin="0.505,-1.289"/>
+                                                <Grid x:Name="MaterialTreeGrid" Margin="10,66,884,10" Background="#7F252525">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="103*"/>
+                                                        <ColumnDefinition Width="359*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Rectangle HorizontalAlignment="Left" Height="56" VerticalAlignment="Top" Width="924" Fill="#7F252525" Grid.ColumnSpan="2"/>
+                                                    <Label x:Name="MaterialText1" Content="Material" HorizontalAlignment="Left" Margin="209,9,0,0" VerticalAlignment="Top" FontSize="24" Grid.Column="1"/>
+                                                    <Grid x:Name="MaterialTree" Margin="0,56,0,0" Grid.ColumnSpan="2">
+                                                        <TextBox x:Name="MayaTb" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="904" Height="686"/>
+                                                    </Grid>
+                                                </Grid>
+                                                <Label Content="Lightmap:" HorizontalAlignment="Left" Margin="1347,66,0,0" VerticalAlignment="Top" FontSize="16" Height="31" Width="107"/>
+                                                <Image x:Name="Diffuse_Tex1" HorizontalAlignment="Left" Height="235" Margin="951,101,0,0" VerticalAlignment="Top" Width="235"/>
+                                                <Image x:Name="Lightmap_Tex1" HorizontalAlignment="Left" Height="235" Margin="1347,101,0,0" VerticalAlignment="Top" Width="235"/>
+                                                <Image x:Name="Emissive_Tex1" HorizontalAlignment="Left" Height="235" Margin="951,405,0,0" VerticalAlignment="Top" Width="235"/>
+                                                <Label Content="Mask:" HorizontalAlignment="Left" Margin="1352,374,0,0" VerticalAlignment="Top" FontSize="16" Height="31" Width="127"/>
+                                                <Image x:Name="Mask_Tex1" HorizontalAlignment="Left" Height="235" Margin="1347,405,0,0" VerticalAlignment="Top" Width="235"/>
+                                                <Button x:Name="BtnConvertMat" Content="Convert to League" HorizontalAlignment="Left" Margin="1694,801,0,0" VerticalAlignment="Top" Click="BtnConvertMat_Click"/>
+                                            </Grid>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem x:Name="LolMat" Header="League Material" Background="#FF252525" FontStyle="Italic">
+                                        <Grid Background="#7F252525" Margin="0,0,0,16">
+                                            <Label Content="Diffuse:" HorizontalAlignment="Left" Margin="951,66,0,0" VerticalAlignment="Top" FontSize="24" Height="37" Width="104"/>
+                                            <Label Content="Emissive:" HorizontalAlignment="Left" Margin="951,0,0,0" VerticalAlignment="Center" FontSize="24" Height="36" Width="116"/>
+                                            <Grid x:Name="RitobinGrid" Margin="10,66,884,10" Background="#7F252525">
+                                                <Rectangle HorizontalAlignment="Center" Height="56" VerticalAlignment="Top" Width="924" Fill="#7F252525"/>
+                                                <Label x:Name="MaterialText" Content="Ritobin Code" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="24"/>
+                                                <Grid x:Name="RitobinCode" Margin="0,56,0,0">
+                                                    <TextBox x:Name="MaterialCode" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="879" Height="689" Background="#7F252525" FontSize="16"/>
+                                                </Grid>
+                                            </Grid>
+                                            <Label Content="Lightmap:" HorizontalAlignment="Left" Margin="1421,66,0,0" VerticalAlignment="Top" FontSize="24" Height="37" Width="127"/>
+                                            <Image x:Name="Diffuse_Tex" HorizontalAlignment="Left" Height="279" Margin="951,108,0,0" VerticalAlignment="Top" Width="279"/>
+                                            <Image x:Name="Lightmap_Tex" HorizontalAlignment="Left" Height="279" Margin="1421,108,0,0" VerticalAlignment="Top" Width="279"/>
+                                            <Image x:Name="Emissive_Tex" HorizontalAlignment="Left" Height="279" Margin="951,468,0,0" VerticalAlignment="Top" Width="279"/>
+                                            <Label Content="Mask:" HorizontalAlignment="Left" Margin="1421,0,0,0" VerticalAlignment="Center" FontSize="24" Height="36" Width="116"/>
+                                            <Image x:Name="Mask_Tex" HorizontalAlignment="Left" Height="279" Margin="1421,468,0,0" VerticalAlignment="Top" Width="279"/>
+                                        </Grid>
+                                    </TabItem>
+                                </mah:MetroAnimatedTabControl>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="SunPropsSystem" Header="Sun Properties">
+                            <TabItem.Background>
+                                <ImageBrush/>
+                            </TabItem.Background>
+                            <Grid>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/Images/AvatarRebornBackground2.png"/>
+                                </Grid.Background>
+                                <Label Content="Sun Color: " HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Height="40" Width="105" FontSize="16"/>
+                                <Label Content="Sun Direction: " HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Height="40" Width="140" FontSize="16"/>
+                                <Label Content="Skylight Color: " HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Height="40" Width="146" FontSize="16"/>
+                                <Label Content="Skylight Scale: " HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Height="40" Width="147" FontSize="16"/>
+                                <Label Content="Horizon Color: " HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Height="41" Width="139" FontSize="16"/>
+                                <Label Content="Ground Color: " HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top" Height="40" Width="136" FontSize="16"/>
+                                <Label Content="Lightmap Color Scale: " HorizontalAlignment="Left" Margin="10,322,0,0" VerticalAlignment="Top" Height="40" Width="209" FontSize="16"/>
+                                <Label Content="Fog: " HorizontalAlignment="Left" Margin="10,371,0,0" VerticalAlignment="Top" Height="40" Width="59" FontSize="16"/>
+                                <Label Content="Fog Start: " HorizontalAlignment="Left" Margin="10,419,0,0" VerticalAlignment="Top" Height="40" Width="116" FontSize="16"/>
+                                <Label Content="Fog End: " HorizontalAlignment="Left" Margin="10,467,0,0" VerticalAlignment="Top" Height="40" Width="96" FontSize="16"/>
+                                <Label Content="Fog Color: " HorizontalAlignment="Left" Margin="10,516,0,0" VerticalAlignment="Top" Height="40" Width="106" FontSize="16"/>
+                                <Label Content="Fog alternate Color: " HorizontalAlignment="Left" Margin="10,564,0,0" VerticalAlignment="Top" Height="40" Width="195" FontSize="16"/>
+                                <Label Content="Fog Emissive Remap: " HorizontalAlignment="Left" Margin="10,612,0,0" VerticalAlignment="Top" Height="40" Width="205" FontSize="16"/>
+                                <Label Content="Bloom: " HorizontalAlignment="Left" Margin="10,661,0,0" VerticalAlignment="Top" Height="40" Width="78" FontSize="16"/>
+                                <Button x:Name="BtnSunColor" Content="" HorizontalAlignment="Left" Margin="247,32,0,0" VerticalAlignment="Top" Width="44" Height="42" Background="#FF8C816C" Click="BtnSunColor_Click"/>
+                                <TextBox x:Name="TbSunDirectionX" HorizontalAlignment="Left" Margin="247,79,0,0" TextWrapping="Wrap" Text="-0.384805" VerticalAlignment="Top" Width="205" LostFocus="TbSunDirectionX_LostFocus" MaxLines="1" MaxLength="8" Height="42" FontSize="20"/>
+                                <TextBox x:Name="TbSunDirectionY" HorizontalAlignment="Left" Margin="464,79,0,0" TextWrapping="Wrap" Text="0.827142" VerticalAlignment="Top" Width="204" LostFocus="TbSunDirectionY_LostFocus" MaxLines="1" MaxLength="8" Height="42" FontSize="20"/>
+                                <TextBox x:Name="TbSunDirectionZ" HorizontalAlignment="Left" Margin="680,79,0,0" TextWrapping="Wrap" Text="-0.409584" VerticalAlignment="Top" Width="205" LostFocus="TbSunDirectionZ_LostFocus" MaxLines="1" MaxLength="8" Height="42"/>
+                                <Button x:Name="BtnSkylightColor" Content="" HorizontalAlignment="Left" Margin="247,127,0,0" VerticalAlignment="Top" Width="44" Height="42" Background="#FFBDA876" Click="BtnSkylightColor_Click"/>
+                                <TextBox x:Name="TbSkylightScale" HorizontalAlignment="Left" Margin="247,175,0,0" TextWrapping="Wrap" Text="1.5" VerticalAlignment="Top" Width="205" LostFocus="TbSkylightScale_LostFocus" MaxLines="1" MaxLength="8" Height="42" FontSize="20"/>
+                                <Button x:Name="BtnHorizonColor" Content="" HorizontalAlignment="Left" Margin="247,224,0,0" VerticalAlignment="Top" Width="44" Height="42" Background="#FF825E4C" Click="BtnHorizonColor_Click"/>
+                                <Button x:Name="BtnGroundColor" Content="" HorizontalAlignment="Left" Margin="247,272,0,0" VerticalAlignment="Top" Width="44" Height="42" Background="#FF5E3864" Click="BtnGroundColor_Click"/>
+                                <TextBox x:Name="TbLightmapScale" HorizontalAlignment="Left" Margin="247,321,0,0" TextWrapping="Wrap" Text="1.6" VerticalAlignment="Top" Width="205" LostFocus="TbLightmapScale_LostFocus" MaxLines="1" MaxLength="8" Height="42" FontSize="20"/>
+                                <CheckBox x:Name="BtnEnableFog" Content="Enable Fog" HorizontalAlignment="Left" Margin="247,375,0,0" VerticalAlignment="Top" Height="29" Width="141" FontSize="16"/>
+                                <Slider x:Name="SliderFogStart" HorizontalAlignment="Left" Margin="247,419,0,0" VerticalAlignment="Top" Width="473" Value="-10000" AutoToolTipPlacement="TopLeft" Maximum="100000" Minimum="-100000" SmallChange="10" TickFrequency="10" Height="39"/>
+                                <Slider x:Name="SliderFogEnd" HorizontalAlignment="Left" Margin="247,467,0,0" VerticalAlignment="Top" Width="473" Value="-50000" Maximum="99999.7" Minimum="-100000" AutoToolTipPlacement="TopLeft" SmallChange="10" TickFrequency="10" Height="39"/>
+                                <Button x:Name="BtnFogColor" Content="" HorizontalAlignment="Left" Margin="247,514,0,0" VerticalAlignment="Top" Width="44" Height="42" Background="#FF1A0F1C" Click="BtnFogColor_Click"/>
+                                <Button x:Name="BtnFogAlternateColor" Content="" HorizontalAlignment="Left" Margin="247,562,0,0" VerticalAlignment="Top" Width="44" Height="42" Background="#FF6B616B" Click="BtnFogAlternateColor_Click"/>
+                                <TextBox x:Name="TbFogEmissiveRemap" HorizontalAlignment="Left" Margin="247,611,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="205" LostFocus="TbFogEmissiveRemap_LostFocus" MaxLines="1" MaxLength="8" Height="42" FontSize="20"/>
+                                <CheckBox x:Name="BtnEnableBloom" Content="Enable Bloom" HorizontalAlignment="Left" Margin="247,666,0,0" VerticalAlignment="Top" IsChecked="True" Height="29" Width="165"/>
+                                <Grid x:Name="GroundGrid" Margin="494,419,0,0" Background="#7E000000" HorizontalAlignment="Left" VerticalAlignment="Top" Height="87" Width="2"/>
+                                <Label x:Name="GroundLable" Content="Ground" HorizontalAlignment="Left" Margin="464,390,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#79FFFFFF" Height="34" Width="63" HorizontalContentAlignment="Center"/>
+                                <Grid Background="#FF2F2F2F" VerticalAlignment="Top" Height="27">
+                                    <Button x:Name="BtnLoadSunSR" Content="Load Template" HorizontalAlignment="Left" VerticalAlignment="Stretch" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="False" Padding="5,6,5,6" FontWeight="Bold" Click="BtnLoadSunSR_Click"/>
+                                    <Button x:Name="BtnSaveSunSR" Content="Save Template" HorizontalAlignment="Left" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" UseLayoutRounding="False" Padding="5,6,5,6" FontWeight="Bold" Margin="94,0,0,0" Click="BtnSaveSunSR_Click"/>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="Characters" HorizontalAlignment="Center" Height="36" Header="Characters" VerticalAlignment="Center" Width="156">
+                            <Grid>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/Images/AvatarRebornBackground2.png"/>
+                                </Grid.Background>
+                                <Grid Background="#FF2F2F2F" VerticalAlignment="Top" Height="27"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="Particles" HorizontalAlignment="Center" Height="36" Header="Particles" VerticalAlignment="Bottom" Width="122">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="275*"/>
+                                    <ColumnDefinition Width="331*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/Images/AvatarRebornBackground2.png"/>
+                                </Grid.Background>
+                            </Grid>
+                        </TabItem>
+                    </mah:MetroAnimatedTabControl>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="ARAM" Header="ARAM" IsEnabled="True">
+                <Grid Background="#FFE5E5E5">
+                    <Image Source="Images/AvatarRebornBackground3.png" Stretch="Fill"/>
+                    <hx:Viewport3DX EffectsManager="{Binding EffectsManager}"
+                    Camera="{Binding Camera}">
+                        <hx:DirectionalLight3D Direction="0, 0, -1" Color="White" />
+                        <hx:MeshGeometryModel3D Geometry="{Binding CubeMesh}" Material="{Binding Red}" />
+                    </hx:Viewport3DX>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TFT" Header="TFT" IsEnabled="False">
+                <Grid Background="#FFE5E5E5">
+                    <Image Source="Images/AvatarRebornBackground4.png" Stretch="Fill"/>
+                </Grid>
+            </TabItem>
+        </mah:MetroAnimatedSingleRowTabControl>
+
+    </Grid>
+
+</mah:MetroWindow>

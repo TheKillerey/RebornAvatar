@@ -1,0 +1,213 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>AvatarReborn2_icon.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <AssemblyName>RebornAvatar</AssemblyName>
+    <Company></Company>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AvatarReborn2_icon.png" />
+    <None Remove="AvatarRebornBackground.png" />
+    <None Remove="AvatarRebornBackground2.png" />
+    <None Remove="AvatarRebornBackground3.png" />
+    <None Remove="AvatarRebornBackground4.png" />
+    <None Remove="Images\AvatarReborn2_waifu2x_4x_3n_png.png" />
+    <None Remove="Images\bilgewaterRift.png" />
+    <None Remove="Images\old-smnrs-rift.png" />
+    <None Remove="Images\projectrift.png" />
+    <None Remove="Images\projectrift_loadingscreen.png" />
+    <None Remove="Images\Wallpaper_SummonersRiftOtherTheme.png" />
+    <None Remove="Images\Wallpaper_unknownperson.png" />
+    <None Remove="IO\Materials\Test.txt" />
+    <None Remove="Projects\defaultsr.avsun" />
+    <None Remove="Shaders\DefaultEnv_Flat_AlphaTest.py" />
+    <None Remove="Shaders\DefaultEnv_Flat_AlphaTest_Decal.py" />
+    <None Remove="Shaders\Default_Emissive.py" />
+    <None Remove="Shaders\Emissive_Basic.py" />
+    <None Remove="Shaders\FlickerAlpha_FlipBook.py" />
+    <None Remove="Shaders\Hologram.py" />
+    <None Remove="Shaders\Hologram_Rotate.py" />
+    <None Remove="Shaders\SinFade_Alpha.py" />
+    <None Remove="Shaders\SRX_Blend_Hextech_Island.py" />
+    <None Remove="Shaders\SRX_Blend_Master.py" />
+    <None Remove="Shaders\SRX_Blend_Master_Lightmap.py" />
+    <None Remove="Templates\Maps\ARAM\base.materials.avsun" />
+    <None Remove="Templates\Maps\ARAM\bilgewater.materials.avsun" />
+    <None Remove="Templates\Maps\NexusBlitz\base.materials.avsun" />
+    <None Remove="Templates\Maps\NexusBlitz\ioniabase.materials.avsun" />
+    <None Remove="Templates\Maps\SRX\base_srx.mapgeo" />
+    <None Remove="Temps\temps.txt" />
+    <None Remove="Tools\Ritobin\ritobin_cli.exe" />
+    <None Remove="Tools\wad-make.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Egorozh.ColorPicker.WPF.Dialog.MahApps" Version="2.4.3.2" />
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.23.0" />
+    <PackageReference Include="HelixToolkit.Wpf.SharpDX" Version="2.23.0" />
+    <PackageReference Include="Intersoft.Crosslight" Version="6.0.5000.975" />
+    <PackageReference Include="LeagueToolkit" Version="3.0.3" />
+    <PackageReference Include="LeagueToolkit.IO.Extensions" Version="3.0.3" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+    <PackageReference Include="NetSparkleUpdater.SparkleUpdater" Version="2.1.2" />
+    <PackageReference Include="NPOI" Version="2.5.6" />
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+    <PackageReference Include="squirrel.windows" Version="1.5.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AvatarReborn2_icon.ico" />
+    <Content Include="Images\AvatarReborn2_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AvatarReborn2_waifu2x_4x_3n_png.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AvatarRebornBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AvatarRebornBackground2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AvatarRebornBackground3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AvatarRebornBackground4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\bilgewaterRift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\old-smnrs-rift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\projectrift.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\projectrift_loadingscreen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Wallpaper_SummonersRiftOtherTheme.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Wallpaper_unknownperson.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="IO\Materials\Test.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\default.avproj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\defaultsr.avsun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\DefaultEnv_Flat_AlphaTest.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\DefaultEnv_Flat_AlphaTest_Decal.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Default_Emissive.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Emissive_Basic.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\FlickerAlpha_FlipBook.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Hologram.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\Hologram_Rotate.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SinFade_Alpha.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SRX_Blend_Hextech_Island.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SRX_Blend_Master_Lightmap.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\SRX_Blend_Master.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Maps\ARAM\base.materials.avsun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Maps\ARAM\bilgewater.materials.avsun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Maps\NexusBlitz\base.materials.avsun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Maps\NexusBlitz\ioniabase.materials.avsun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Maps\SRX\base_srx.mapgeo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Maps\SRX\project_rift.avsun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Maps\SRX\base_srx.materials.avsun">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Temps\temps.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Ritobin\hashes\hashes.binentries.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Ritobin\hashes\hashes.binfields.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Ritobin\hashes\hashes.binhashes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Ritobin\hashes\hashes.bintypes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Ritobin\hashes\hashes.game.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Ritobin\hashes\hashes.lcu.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\Ritobin\ritobin_cli.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\wad-make.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

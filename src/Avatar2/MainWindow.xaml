@@ -1,0 +1,16 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Avatar2"
+        xmlns:Units="clr-namespace:Lol.Main.UI.Units;assembly=Lol.Main" xmlns:Units1="clr-namespace:Lol.Home.UI.Units;assembly=Lol.Home" xmlns:Units2="clr-namespace:Lol.Collection.UI.Units;assembly=Lol.Collection" x:Class="Avatar2.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Units:MainMenu HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="14"/>
+        <Units2:ChampionsList Margin="0,10,0,5"/>
+
+    </Grid>
+</Window>

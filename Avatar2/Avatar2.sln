@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avatar2", "Avatar2\Avatar2.csproj", "{4716F609-5B4A-4E96-AD25-F5D62230BF16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4716F609-5B4A-4E96-AD25-F5D62230BF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4716F609-5B4A-4E96-AD25-F5D62230BF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4716F609-5B4A-4E96-AD25-F5D62230BF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4716F609-5B4A-4E96-AD25-F5D62230BF16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F7CF1EC-E2E8-453F-BF0D-0F0F384F3593}
+	EndGlobalSection
+EndGlobal

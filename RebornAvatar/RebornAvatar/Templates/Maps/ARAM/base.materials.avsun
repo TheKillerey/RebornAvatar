@@ -1,0 +1,14 @@
+AvatarProjectVersion: 1
+sunColor: vec4 = { 0.36470589, 0.384313732, 0.392156869, 1 }
+sunDirection: vec3 = { -0.379999995, 0.707000017, 0.0500000007 }
+skyLightColor: vec4 = { 0.549019635, 0.580392182, 0.639215708, 1 }
+skyLightScale: f32 = 0.800000012
+horizonColor: vec4 = { 0.631372571, 0.725490212, 0.815686285, 1 }
+groundColor: vec4 = { 0.274509817, 0.31764707, 0.41568628, 1 }
+lightMapColorScale: f32 = 2
+fogEnabled: bool = true
+fogStartAndEnd: vec2 = { -18361, -32711 }
+fogColor: vec4 = { 0.211764708, 0.274509817, 0.407843143, 1 }
+fogAlternateColor: vec4 = { 0.20784314, 0.313725501, 0.498039216, 1 }
+fogEmissiveRemap: f32 = 1
+useBloom: bool = true
