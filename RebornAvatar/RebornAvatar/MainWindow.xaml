@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResizeWithGrip"
         Title="Reborn Avatar" Height="978" Width="1818">
-    
+
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
             <Button Click="LaunchKillerSkinsSite" ToolTip="Open up Killerskins site">
@@ -40,17 +40,21 @@
             </Button>
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
-    
+
     <mah:MetroWindow.DataContext>
         <models:MainViewModel></models:MainViewModel>
     </mah:MetroWindow.DataContext>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="867*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="454*"/>
             <ColumnDefinition Width="455*"/>
         </Grid.ColumnDefinitions>
-        <mah:MetroAnimatedSingleRowTabControl Grid.ColumnSpan="2" FontFamily="Tahoma" FontStyle="Normal" FontWeight="Normal" mah:HeaderedControlHelper.HeaderFontFamily="Verdana">
+        <mah:MetroAnimatedSingleRowTabControl Grid.ColumnSpan="2" FontFamily="Tahoma" FontStyle="Normal" FontWeight="Normal" mah:HeaderedControlHelper.HeaderFontFamily="Verdana" Grid.RowSpan="2">
             <TabItem x:Name="Home" Header="Home" FontWeight="Normal" IsSelected="True">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -187,7 +191,7 @@
                                 <Grid.Background>
                                     <ImageBrush ImageSource="/Images/AvatarRebornBackground2.png"/>
                                 </Grid.Background>
-                                <TreeView x:Name="LayerEditor" Margin="36,66,909,57" Background="#7F252525" SelectedItemChanged="LayerEditor_SelectedItemChanged" IsTextSearchEnabled="True"/>
+                                <TreeView x:Name="LayerEditor" Margin="36,66,909,57" Background="#7F252525" IsTextSearchEnabled="True"/>
                                 <Grid Background="#FF2F2F2F" VerticalAlignment="Top" Height="27">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="421*"/>
@@ -203,9 +207,9 @@
                                         <Label x:Name="Indices" Content="Indices:" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" FontSize="18"/>
                                         <Label x:Name="MaterialName" Content="Material Name:" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" FontSize="18"/>
                                         <Label x:Name="FlippedNormals" Content="Flipped Normals:" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                        <Label x:Name="Flags" Content="Flags:" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="RenderFlags" Content="Render Flags:" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top" FontSize="18"/>
                                         <Label x:Name="Layers" Content="Layers:" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                        <Label x:Name="Lightmap" Content="Lightmap:" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                        <Label x:Name="BakedLight" Content="Baked Light Texture:" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" FontSize="18"/>
                                         <Label x:Name="Baked_Paint_Texture" Content="Baked Paint Texture:" HorizontalAlignment="Left" Margin="10,416,0,0" VerticalAlignment="Top" FontSize="18"/>
                                         <Label x:Name="LightmapUVOffset" Content="Lightmap UV Offset:" HorizontalAlignment="Left" Margin="10,454,0,0" VerticalAlignment="Top" FontSize="18"/>
                                         <Label x:Name="BakedPaintTextureUVOffset" Content="Paint UV Offset:" HorizontalAlignment="Left" Margin="10,490,0,0" VerticalAlignment="Top" FontSize="18"/>
@@ -214,17 +218,14 @@
                                         <TextBox x:Name="TbObjectName" HorizontalAlignment="Left" Margin="217,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
                                         <TextBox x:Name="TbMaterialName" HorizontalAlignment="Left" Margin="217,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
                                         <CheckBox x:Name="CbFlippedNormals" Content="" HorizontalAlignment="Left" Margin="217,274,0,0" VerticalAlignment="Top"/>
-                                        <ComboBox x:Name="CobFlags" HorizontalAlignment="Left" Margin="217,307,0,0" VerticalAlignment="Top" Width="120">
-                                            <ComboBoxItem ContentStringFormat="" Content="GenericObject"/>
-                                        </ComboBox>
-                                        <CheckBox x:Name="CbLayer1" Content="Layer1" HorizontalAlignment="Left" Margin="217,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
-                                        <CheckBox x:Name="CbLayer2" Content="Layer2" HorizontalAlignment="Left" Margin="280,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
-                                        <CheckBox x:Name="CbLayer3" Content="Layer3" HorizontalAlignment="Left" Margin="346,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
-                                        <CheckBox x:Name="CbLayer4" Content="Layer4" HorizontalAlignment="Left" Margin="412,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
-                                        <CheckBox x:Name="CbLayer5" Content="Layer5" HorizontalAlignment="Left" Margin="478,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
-                                        <CheckBox x:Name="CbLayer6" Content="Layer6" HorizontalAlignment="Left" Margin="544,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
-                                        <CheckBox x:Name="CbLayer7" Content="Layer7" HorizontalAlignment="Left" Margin="610,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
-                                        <CheckBox x:Name="CbLayer8" Content="Layer8" HorizontalAlignment="Left" Margin="676,348,0,0" VerticalAlignment="Top" FontFamily="Ink Free"/>
+                                        <CheckBox x:Name="CbLayer1" Content="Layer1" HorizontalAlignment="Left" Margin="217,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
+                                        <CheckBox x:Name="CbLayer2" Content="Layer2" HorizontalAlignment="Left" Margin="280,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
+                                        <CheckBox x:Name="CbLayer3" Content="Layer3" HorizontalAlignment="Left" Margin="346,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
+                                        <CheckBox x:Name="CbLayer4" Content="Layer4" HorizontalAlignment="Left" Margin="412,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
+                                        <CheckBox x:Name="CbLayer5" Content="Layer5" HorizontalAlignment="Left" Margin="478,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
+                                        <CheckBox x:Name="CbLayer6" Content="Layer6" HorizontalAlignment="Left" Margin="544,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
+                                        <CheckBox x:Name="CbLayer7" Content="Layer7" HorizontalAlignment="Left" Margin="610,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
+                                        <CheckBox x:Name="CbLayer8" Content="Layer8" HorizontalAlignment="Left" Margin="676,348,0,0" VerticalAlignment="Top" FontFamily="Tahoma"/>
                                         <TextBox x:Name="TbLightmap" HorizontalAlignment="Left" Margin="215,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
                                         <TextBox x:Name="TbBakedPaintTexture" HorizontalAlignment="Left" Margin="215,418,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>
                                         <TextBox x:Name="TbColorR" HorizontalAlignment="Left" Margin="215,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
@@ -252,12 +253,12 @@
                                         <TextBox x:Name="TbTransZ" HorizontalAlignment="Left" Margin="471,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
                                         <Label x:Name="Rotation" Content="Rotation:" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" FontSize="18"/>
                                         <Label x:Name="Scale" Content="Scale:" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                        <TextBox x:Name="TbRotX" HorizontalAlignment="Left" Margin="217,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
-                                        <TextBox x:Name="TbRotY" HorizontalAlignment="Left" Margin="343,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
-                                        <TextBox x:Name="TbRotZ" HorizontalAlignment="Left" Margin="471,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
-                                        <TextBox x:Name="TbScaleX" HorizontalAlignment="Left" Margin="217,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
-                                        <TextBox x:Name="TbScaleY" HorizontalAlignment="Left" Margin="343,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
-                                        <TextBox x:Name="TbScaleZ" HorizontalAlignment="Left" Margin="471,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True"/>
+                                        <TextBox x:Name="TbRotX" HorizontalAlignment="Left" Margin="217,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True" Text="0"/>
+                                        <TextBox x:Name="TbRotY" HorizontalAlignment="Left" Margin="343,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True" IsEnabled="False" Text="0"/>
+                                        <TextBox x:Name="TbRotZ" HorizontalAlignment="Left" Margin="471,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True" IsEnabled="False" Text="0"/>
+                                        <TextBox x:Name="TbScaleX" HorizontalAlignment="Left" Margin="217,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True" IsEnabled="False" Text="1"/>
+                                        <TextBox x:Name="TbScaleY" HorizontalAlignment="Left" Margin="343,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True" IsEnabled="False" Text="1"/>
+                                        <TextBox x:Name="TbScaleZ" HorizontalAlignment="Left" Margin="471,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" IsReadOnly="True" IsEnabled="False" Text="1"/>
                                         <Button x:Name="BtnSaveSettings" Content="Save Settings" HorizontalAlignment="Left" Margin="716,674,0,0" VerticalAlignment="Top" ToolTip="If you don't save the settings will be not changed!" Click="BtnSaveSettings_Click"/>
                                     </Grid>
                                 </Grid>
@@ -387,12 +388,166 @@
             </TabItem>
             <TabItem x:Name="ARAM" Header="ARAM" IsEnabled="True">
                 <Grid Background="#FFE5E5E5">
-                    <Image Source="Images/AvatarRebornBackground3.png" Stretch="Fill"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="266*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Images/AvatarRebornBackground3.png" Stretch="Fill" Grid.ColumnSpan="2"/>
                     <hx:Viewport3DX EffectsManager="{Binding EffectsManager}"
-                    Camera="{Binding Camera}">
+                    Camera="{Binding Camera}" Margin="207,44,429,328" Grid.Column="1">
                         <hx:DirectionalLight3D Direction="0, 0, -1" Color="White" />
                         <hx:MeshGeometryModel3D Geometry="{Binding CubeMesh}" Material="{Binding Red}" />
                     </hx:Viewport3DX>
+                    <ScrollViewer Margin="1182,219,0,549" Grid.Column="1">
+                        <Grid x:Name="TransformView" Background="#7F252525" Height="158">
+                            <Label x:Name="TransformLable" Content="Transform" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label x:Name="PositionLable" Content="Position" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="RotationLable" Content="Rotation" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
+                            <Label x:Name="ScaleLable" Content="Scale" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top"/>
+                            <Label Content="X" HorizontalAlignment="Left" Margin="96,55,0,0" VerticalAlignment="Top"/>
+                            <Label Content="X" HorizontalAlignment="Left" Margin="96,84,0,0" VerticalAlignment="Top"/>
+                            <Label Content="X" HorizontalAlignment="Left" Margin="96,113,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Y" HorizontalAlignment="Left" Margin="197,55,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Y" HorizontalAlignment="Left" Margin="197,84,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Y" HorizontalAlignment="Left" Margin="197,113,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Z" HorizontalAlignment="Left" Margin="298,55,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Z" HorizontalAlignment="Left" Margin="298,84,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Z" HorizontalAlignment="Left" Margin="298,113,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="TBTransformX" TextWrapping="Wrap" Text="0" Margin="117,59,201,82" FontSize="9" MinHeight="0" RenderTransformOrigin="0.502,0.508" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic" FontWeight="Bold">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBTransformY" TextWrapping="Wrap" Text="0" Margin="218,59,100,82" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBTransformZ" TextWrapping="Wrap" Text="0" Margin="319,59,-1,82" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBRotationX" TextWrapping="Wrap" Text="0" Margin="117,88,201,52" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBRotationY" TextWrapping="Wrap" Text="0" Margin="218,88,100,52" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBRotationZ" TextWrapping="Wrap" Text="0" Margin="319,88,-1,52" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBScaleX" TextWrapping="Wrap" Text="0" Margin="117,116,201,24" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" Padding="0,0,0,0" FontStyle="Italic" VerticalContentAlignment="Center">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBScaleY" TextWrapping="Wrap" Text="0" Margin="219,116,99,24" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <TextBox x:Name="TBScaleZ" TextWrapping="Wrap" Text="0" Margin="319,116,-1,24" FontSize="9" MinHeight="0" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" MinWidth="2" VerticalContentAlignment="Center" Padding="0,0,0,0" FontStyle="Italic">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="-3"/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                        </Grid>
+                    </ScrollViewer>
+                    <TextBox x:Name="TBMeshesName" HorizontalAlignment="Left" Margin="1182,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Height="16" Background="#7F252525" Grid.Column="1"/>
+                    <ComboBox x:Name="CBLayers_Copy" HorizontalAlignment="Left" Margin="1232,44,0,0" VerticalAlignment="Top" Width="143" Background="#7F252525" Grid.Column="1">
+                        <ComboBoxItem Content="AllQualities" Background="#7F252525" BorderBrush="Transparent" Foreground="White"/>
+                        <ComboBoxItem Background="#7F252525" Content="High"/>
+                        <ComboBoxItem Background="#7F252525" Content="Low"/>
+                        <ComboBoxItem Background="#7F252525" Content="Medium"/>
+                        <ComboBoxItem Background="#7F252525" Content="VeryHigh"/>
+                        <ComboBoxItem Background="#7F252525" Content="VeryLow"/>
+                    </ComboBox>
+                    <Label Content="Quality" HorizontalAlignment="Left" Margin="1182,45,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Grid Margin="1182,120,14,712" Background="#7F252525" Grid.Column="1">
+                        <CheckBox x:Name="CbLayer1_New" Content="Layer1" FontFamily="Tahoma" ToolTip="Layer 1 renders only the base meshes for Summoners Rift. Before the other Dragon maps spawn." Margin="6,38,302,38"/>
+                        <CheckBox x:Name="CbLayer2_New" Content="Layer2" FontFamily="Tahoma" ToolTip="Layer 2 is the Infernal Dragon Layer which is used in Summoners Rift." Margin="105,38,204,38"/>
+                        <CheckBox x:Name="CbLayer3_New" Content="Layer3" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Tahoma" ToolTip="Layer 3 is the Mountain Dragon Layer which is used in Summoners Rift." Margin="205,0,0,0" Width="91"/>
+                        <CheckBox x:Name="CbLayer4_New" Content="Layer4" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Tahoma" ToolTip="Layer 4 is the Ocean Dragon Layer which is used in Summoners Rift." Margin="303,0,0,0" Width="90"/>
+                        <CheckBox x:Name="CbLayer5_New" Content="Layer5" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Tahoma" ToolTip="Layer 5 is the Cloud Dragon Layer which is used in Summoners Rift." Margin="6,66,0,0" Width="91"/>
+                        <CheckBox x:Name="CbLayer6_New" Content="Layer6" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Tahoma" ToolTip="Layer 6 is the Hextech Dragon Layer which is used in Summoners Rift." Margin="105,66,0,0" Width="91"/>
+                        <CheckBox x:Name="CbLayer7_New" Content="Layer7" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Tahoma" ToolTip="Layer 7 is the Chemtech Dragon Layer which is used in Summoners Rift." Margin="205,66,0,0" Width="91"/>
+                        <CheckBox x:Name="CbLayer8_New" Content="Layer8" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Tahoma" ToolTip="Layer 8 has no function yet in Summoners Rift." Margin="303,66,0,0" Width="90"/>
+                        <Label Content="Layer" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                    </Grid>
+                    <Label Content="Flip Normals" HorizontalAlignment="Left" Margin="1389,45,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox x:Name="CBFlipNormals" HorizontalAlignment="Left" Margin="1469,44,0,0" VerticalAlignment="Top" Width="113" Background="#7F252525" Grid.Column="1">
+                        <ComboBoxItem Content="False" Foreground="#7F252525"/>
+                        <ComboBoxItem Content="True" Foreground="#7F252525"/>
+                    </ComboBox>
+                    <ScrollViewer Margin="1182,382,0,26" Grid.Column="1">
+                        <Grid Height="544" Width="400" Background="#7F252525">
+                            <Label Content="Material" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.5,0.247"/>
+                            <TextBox x:Name="TBMaterialName" HorizontalAlignment="Center" Margin="0,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380"/>
+                        </Grid>
+                    </ScrollViewer>
+                    <TreeView x:Name="MeshViewport" Background="#7F252525" SelectedItemChanged="MeshViewport_SelectedItemChanged" IsTextSearchEnabled="True" Margin="10,45,1404,26" Grid.ColumnSpan="2"/>
+                    <Label Content="Meshes" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock x:Name="TbVertices_New" HorizontalAlignment="Left" Margin="265,603,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="14" Grid.Column="1"/>
+                    <TextBlock x:Name="TbIndices_New" HorizontalAlignment="Left" Margin="388,603,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="14" Grid.Column="1"/>
+                    <Label Grid.Column="1" Content="Vertices" HorizontalAlignment="Left" Margin="208,599,0,0" VerticalAlignment="Top"/>
+                    <Label Grid.Column="1" Content="Indices" HorizontalAlignment="Left" Margin="335,599,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="CBHighRenderPriority" HorizontalAlignment="Left" Margin="1304,84,0,0" VerticalAlignment="Top" Width="71" Background="#7F252525" Grid.Column="1">
+                        <ComboBoxItem Content="False" Background="#7F252525" BorderBrush="Transparent" Foreground="White"/>
+                        <ComboBoxItem Background="#7F252525" Content="True"/>
+                    </ComboBox>
+                    <Label Content="High Render Priority" HorizontalAlignment="Left" Margin="1182,85,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TFT" Header="TFT" IsEnabled="False">

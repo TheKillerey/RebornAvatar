@@ -44,6 +44,11 @@ using System.Windows.Media.Media3D;
 using RebornAvatar.IO.Models;
 using HelixToolkit.Wpf;
 using HelixToolkit.Wpf.SharpDX;
+using LeagueToolkit.IO.MapGeometryFile.Builder;
+using RebornAvatar.IO.Matrix;
+using SharpDX;
+using LeagueToolkit.IO.PropertyBin;
+using LeagueToolkit.Meta;
 
 namespace RebornAvatar
 {
@@ -60,6 +65,11 @@ namespace RebornAvatar
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             Version.Content = fileVersionInfo.ProductVersion;
+
+            MapGeometryModelBuilder mbuild = new MapGeometryModelBuilder();
+            MapGeometry m2build = new MapGeometry(@"F:\League Mods\ProjectRift_v10\MAP11\DATA\maps\mapgeometry\sr\Worlds_TrophyOnly.mapgeo");
+
+            
 
 
             byte[] fileContents = File.ReadAllBytes("Downloads/loadingscreen/srbackground.csscraps.png");
@@ -736,7 +746,7 @@ namespace RebornAvatar
 
             if (openFileDialog.ShowDialog() == true)
             {
-                LayerEditor.Items.Clear();
+                MeshViewport.Items.Clear();
                 
                 MapGeometry map = new MapGeometry(openFileDialog.FileName);
                 mapfile = map;
@@ -748,16 +758,15 @@ namespace RebornAvatar
                 {
                     if (!file.Submeshes[0].Material.Contains("/Materials/"))
                     {
-                        //file.Submeshes[0].Material = file.Submeshes[0].Material.Replace(file.Submeshes[0].Material, $"{path}{file.Submeshes[0].Material}");
+                        file.Submeshes[0].Material.Replace(file.Submeshes[0].Material, $"{path}{file.Submeshes[0].Material}");
                     }
-
 
                     TreeViewItem Name = new TreeViewItem();
 
-                    Name.Header = file.Submeshes[0].Material;
-                    
-                   
-                    LayerEditor.Items.Add(Name);
+                    Name.Header = file.Name;
+
+
+                    MeshViewport.Items.Add(Name);
 
                     mapmodel = file;
                 }
@@ -786,119 +795,129 @@ namespace RebornAvatar
             Settings.IsEnabled = true;
         }
 
-        private void LayerEditor_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void MeshViewport_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             //Try Loading mapgeo bin file
             try
             {
                 MaterialCode.Text = "";
-                var test = LayerEditor.Items.IndexOf(LayerEditor.SelectedItem);
+                var test = MeshViewport.Items.IndexOf(MeshViewport.SelectedItem);
                 listnumber = test;
-                //TbObjectName.Text = mapfile.Models[test].Name;
-                //TbVertices.Text = mapfile.Models[test].Vertices.Count.ToString();
-                //TbIndices.Text = mapfile.Models[test].Indices.Count.ToString();
+                TBMeshesName.Text = mapfile.Meshes[test].Name;
+                TbVertices_New.Text = mapfile.Meshes[test].Vertices.Length.ToString();
+                TbIndices_New.Text = mapfile.Meshes[test].Indices.Length.ToString();
 
-                //Transformation
-                //TbTransX.Text = mapfile.Models[test].Transformation.Translation.X.ToString();
-                //TbTransY.Text = mapfile.Models[test].Transformation.Translation.Y.ToString();
-                //TbTransZ.Text = mapfile.Models[test].Transformation.Translation.Z.ToString();
+                //Position
+                TBTransformX.Text = mapfile.Meshes[test].Transform.Translation.X.ToString();
+                TBTransformY.Text = mapfile.Meshes[test].Transform.Translation.Y.ToString();
+                TBTransformZ.Text = mapfile.Meshes[test].Transform.Translation.Z.ToString();
+
                 //Rotation
-                //TbRotX.Text = mapfile.Models[test].Transformation.Rotation.X.ToString();
-                //TbRotY.Text = mapfile.Models[test].Transformation.Rotation.Y.ToString();
-                //TbRotZ.Text = mapfile.Models[test].Transformation.Rotation.Z.ToString();
+                var Values = mapfile.Meshes[test].Transform;
+                var RotationX = new System.Numerics.Quaternion();
+                var quat = new System.Numerics.Quaternion();
+
+
+                //TbRotX.Text = mapfile.Meshes[test].Transform;
+                //TbRotY.Text = mapfile.Meshes[test].Transformation.Rotation.Y.ToString();
+                //TbRotZ.Text = mapfile.Meshes[test].Transformation.Rotation.Z.ToString();
+
                 //Scale
-                //TbScaleX.Text = mapfile.Models[test].Transformation.Scale.X.ToString();
-                //TbScaleY.Text = mapfile.Models[test].Transformation.Scale.Y.ToString();
-                //TbScaleZ.Text = mapfile.Models[test].Transformation.Scale.Z.ToString();
+                //TbScaleX.Text = mapfile.Meshes[test].Transformation.Scale.X.ToString();
+                //TbScaleY.Text = mapfile.Meshes[test].Transformation.Scale.Y.ToString();
+                //TbScaleZ.Text = mapfile.Meshes[test].Transformation.Scale.Z.ToString();
 
-                //TbMaterialName.Text = mapfile.Models[test].Submeshes[0].Material.ToString();
-                //if (mapfile.Meshes[test].FlipNormals == true)
-                //{
-                //    CbFlippedNormals.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbFlippedNormals.IsChecked = false;
-                //}
+                TBMaterialName.Text = mapfile.Meshes[test].Submeshes[0].Material.ToString();
+                if (mapfile.Meshes[test].FlipNormals == true)
+                {
+                    CBFlipNormals.SelectedIndex = 1;
+                }
+                else
+                {
+                    CBFlipNormals.SelectedIndex = 0;
+                }
 
 
-                //if ((mapfile.Meshes[test].MeshRenderFlags & MapGeometryMeshRenderFlags.HighRenderPriority) == MapGeometryMeshRenderFlags.HighRenderPriority)
-                //{
-                //    CobFlags.SelectedIndex = 0;
-                //}
+                if (mapfile.Meshes[test].RenderFlags == 0)
+                {
+                    CBHighRenderPriority.SelectedIndex = 0;
+                }
+                else
+                {
+                    CBHighRenderPriority.SelectedIndex = 1;
+                }
 
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer1) == MapGeometryLayer.Layer1)
-                //{
-                //    CbLayer1.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer1.IsChecked= false;
-                //}
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer1) == MapGeometryVisibilityFlags.Layer1)
+                {
+                    CbLayer1_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer1_New.IsChecked= false;
+                }
 
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer2) == MapGeometryLayer.Layer2)
-                //{
-                //    CbLayer2.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer2.IsChecked = false;
-                //}
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer3) == MapGeometryLayer.Layer3)
-                //{
-                //    CbLayer3.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer3.IsChecked = false;
-                //}
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer4) == MapGeometryLayer.Layer4)
-                //{
-                //    CbLayer4.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer4.IsChecked = false;
-                //}
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer5) == MapGeometryLayer.Layer5)
-                //{
-                //    CbLayer5.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer5.IsChecked = false;
-                //}
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer6) == MapGeometryLayer.Layer6)
-                //{
-                //    CbLayer6.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer6.IsChecked = false;
-                //}
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer7) == MapGeometryLayer.Layer7)
-                //{
-                //    CbLayer7.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer7.IsChecked = false;
-                //}
-                //if ((mapfile.Models[test].Layer & MapGeometryLayer.Layer8) == MapGeometryLayer.Layer8)
-                //{
-                //    CbLayer8.IsChecked = true;
-                //}
-                //else
-                //{
-                //    CbLayer8.IsChecked = false;
-                //}
-                //TbLightmap.Text = mapfile.Models[test].BakedLightTexture;
-                //TbBakedPaintTexture.Text = mapfile.Models[test].BakedPaintTexture;
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer2) == MapGeometryVisibilityFlags.Layer2)
+                {
+                    CbLayer2_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer2_New.IsChecked = false;
+                }
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer3) == MapGeometryVisibilityFlags.Layer3)
+                {
+                    CbLayer3_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer3_New.IsChecked = false;
+                }
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer4) == MapGeometryVisibilityFlags.Layer4)
+                {
+                    CbLayer4_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer4_New.IsChecked = false;
+                }
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer5) == MapGeometryVisibilityFlags.Layer5)
+                {
+                    CbLayer5_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer5_New.IsChecked = false;
+                }
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer6) == MapGeometryVisibilityFlags.Layer6)
+                {
+                    CbLayer6_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer6_New.IsChecked = false;
+                }
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer7) == MapGeometryVisibilityFlags.Layer7)
+                {
+                    CbLayer7_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer7_New.IsChecked = false;
+                }
+                if ((mapfile.Meshes[test].VisibilityFlags & MapGeometryVisibilityFlags.Layer8) == MapGeometryVisibilityFlags.Layer8)
+                {
+                    CbLayer8_New.IsChecked = true;
+                }
+                else
+                {
+                    CbLayer8_New.IsChecked = false;
+                }
+                TbLightmap.Text = mapfile.Meshes[test].BakedLight.ToString();
+                TbBakedPaintTexture.Text = mapfile.Meshes[test].BakedPaint.ToString();
 
-                //TbColorR.Text = mapfile.Models[test].Color.R.ToString();
-                //TbColorG.Text = mapfile.Models[test].Color.G.ToString();
-                //TbColorB.Text = mapfile.Models[test].Color.B.ToString();
-                //TbColorA.Text = mapfile.Models[test].Color.A.ToString();
+                TbColorR.Text = mapfile.Meshes[test].BakedPaint.Bias.ToString();
+                TbColorG.Text = mapfile.Meshes[test].BakedPaint.Scale.ToString();
+                TbColorB.Text = mapfile.Meshes[test].BakedPaint.Texture.ToString();
 
                 //TbBakedPaintColorR.Text = mapfile.Models[test].BakedPaintColor.R.ToString();
                 //TbBakedPaintColorG.Text = mapfile.Models[test].BakedPaintColor.G.ToString();
@@ -913,7 +932,7 @@ namespace RebornAvatar
                 //MaterialCode.Text = result;
                 //MaterialCode.Text = result2;
                 //Get the ASSETS Folder of selected MAPGEO File
-                
+
                 try
                 {
                     //pathofmapgeo
@@ -1079,8 +1098,7 @@ namespace RebornAvatar
             var y = float.Parse(TbTransY.Text);
             var z = float.Parse(TbTransZ.Text);
 
-            Vector3 vector = new Vector3(x, y, z);
-            Matrix4x4 transformation = Matrix4x4.CreateTranslation(vector);
+            //Matrix4x4 transformation = Matrix4x4.CreateTranslation(vector);
             R3DMatrix44 r3D = new R3DMatrix44();
             //MaterialName
             //mapfile.Models[listnumber].Submeshes[0].Material = TbMaterialName.Text;
@@ -1244,7 +1262,5 @@ namespace RebornAvatar
         }
 
        
-        
-
     }
 }
